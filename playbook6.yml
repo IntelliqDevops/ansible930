@@ -1,0 +1,19 @@
+---
+- name: Create a directory and download jenkins.war and change permissions
+  hosts: all
+  tasks:
+    - name: Create an empty directory
+      file:
+        name: /tmp/dir1
+        state: directory
+    - name: Download jenkins.war into the above created directory
+      get_url:
+        url: https://get.jenkins.io/war-stable/2.504.3/jenkins.war
+        dest: /tmp/dir1
+    - name: Change permissions on the file
+      file:
+        name: /tmp/dir1/jenkins.war
+        mode: 750
+        owner: Raju
+        group: root
+...
