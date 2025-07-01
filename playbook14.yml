@@ -1,0 +1,9 @@
+---
+- name: User creation using host scope variables
+  hosts: appserver
+  tasks:
+    - name: User creation
+      user: 
+        name: "{{a}}"
+        password: "{{b}}"
+        home: "{{c}}" 
